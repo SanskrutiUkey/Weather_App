@@ -1,0 +1,29 @@
+.main-user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: rgb(2, 2, 27)rgba(2, 2, 27, 0.788)rgba(1, 1, 21, 0.788)rgba(1, 1, 21, 0.667)rgba(1, 1, 21, 0.388)
+}
+
+/* .Pref {
+    font-family: Arial, sans-serif;
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.city-item {
+    margin-bottom: 10px;
+}
+
+.city-item span {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+} */
