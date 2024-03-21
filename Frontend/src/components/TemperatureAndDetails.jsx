@@ -1,9 +1,12 @@
 import React from "react";
 import { GoLocation } from "react-icons/go";
-// import { sun,moon,dCloudy } from "../assets/icons";
 import { temp, wind, humid } from "../assets/images";
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1d7f15bf3f61e8e3b07c1763df535cfd26e1f423
 
 const TemperatureAndDetails = ({ data }) => {
 	if (!data) {

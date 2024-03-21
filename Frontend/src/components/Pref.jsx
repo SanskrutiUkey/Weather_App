@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1d7f15bf3f61e8e3b07c1763df535cfd26e1f423
 
 import React, { useState } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';

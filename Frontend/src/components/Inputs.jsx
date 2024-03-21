@@ -4,6 +4,10 @@ import { GoLocation, GoSearch } from "react-icons/go";
 import { AsyncPaginate } from "react-select-async-paginate";
 import { GEO_API_URL, geoApiOptions } from "./Api";
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1d7f15bf3f61e8e3b07c1763df535cfd26e1f423
 const Inputs = ({ onSearchChange }) => {
 	const [search1, setSearch1] = useState(null);
 	const [search2, setSearch2] = useState(null);
