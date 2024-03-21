@@ -2,10 +2,14 @@ import mongoose from 'mongoose';
 
 const PreferenceSchema = new mongoose.Schema(
     {
-        user: {
-            type: mongoose.ObjectId,
-            ref: 'Users',
+        // user: {
+        //     type: mongoose.Schema.Types.ObjectId,
+        //     ref: 'Users',
 
+        // },
+        user: {
+            type: String,
+            required: true
         },
         city: {
             type: String,

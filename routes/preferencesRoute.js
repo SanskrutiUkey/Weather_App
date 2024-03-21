@@ -12,34 +12,35 @@ router.delete('/delete-pref/:userId', authMiddleware, deletePreferencesControlle
 
 
 // Define a route for fetching weather updates
-router.get(`/fetch-weather-updates`, async (req, res) => {
-    try {
-        // Call the function to fetch weather updates for cities
-        await fetchWeatherUpdatesForCities();
+// router.get(`/fetch-weather-updates`, async (req, res) => {
+//     try {
 
-        // Respond with a success message
-        res.status(200).json({ message: 'Weather updates fetched successfully' });
-    } catch (error) {
-        // Handle errors
-        console.error('Error fetching weather updates:', error);
-        res.status(500).json({ error: 'Internal server error' });
-    }
-});
+//         // Call the function to fetch weather updates for cities
+//         await fetchWeatherUpdatesForCities();
 
-// Define a route for handling weather updates and comparing with user preferences
-router.post('/handle-weather-updates', async (req, res) => {
-    try {
-        // Call the function to compare weather updates with user preferences
-        await compareWeatherWithPreferences();
+//         // Respond with a success message
+//         res.status(200).json({ message: 'Weather updates fetched successfully' });
+//     } catch (error) {
+//         // Handle errors
+//         console.error('Error fetching weather updates:', error);
+//         res.status(500).json({ error: 'Internal server error' });
+//     }
+// });
 
-        // Respond with a success message
-        res.status(200).json({ message: 'Weather updates compared with preferences' });
-    } catch (error) {
-        // Handle errors
-        console.error('Error comparing weather updates with preferences:', error);
-        res.status(500).json({ error: 'Internal server error' });
-    }
-});
+// // Define a route for handling weather updates and comparing with user preferences
+// router.post('/handle-weather-updates', async (req, res) => {
+//     try {
+//         // Call the function to compare weather updates with user preferences
+//         await compareWeatherWithPreferences();
+
+//         // Respond with a success message
+//         res.status(200).json({ message: 'Weather updates compared with preferences' });
+//     } catch (error) {
+//         // Handle errors
+//         console.error('Error comparing weather updates with preferences:', error);
+//         res.status(500).json({ error: 'Internal server error' });
+//     }
+// });
 
 
 export default router;

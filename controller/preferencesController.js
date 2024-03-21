@@ -11,7 +11,7 @@ export const getPreferenceController = async (req, res) => {
         // Check if the user has already reached the maximum limit of preferences
         const getAllPref = await preferenceModel.find({ user: userId });
 
-        res.status(201).json({ message: "Preference listed" });
+        res.status(200).json({ message: "Preference listed", getAllPref });
     } catch (error) {
         // Handle errors
         console.error("Error in getting preferences:", error);
@@ -76,13 +76,15 @@ export const deletePreferencesController = async (req, res) => {
         const { userId } = req.params; // Get the preference ID from request parameters
 
         // Find preference by ID and delete it
-        const deletedPreference = await preferenceModel.findByIdAndDelete(id);
-
+        // const deletedPreference = await preferenceModel.findByIdAndDelete(id);
+        const { cityName } = req.body;
+        console.log("cityName ", cityName);
+        const deletedPreference = await preferenceModel.deleteMany({ user: userId, city: cityName });
         if (!deletedPreference) {
             return res.status(404).json({ error: 'Preference not found' });
         }
 
-        res.status(200).json({ message: 'Preference deleted successfully' });
+        res.status(200).json({ message: 'Preference deleted successfully', deletedPreference });
     } catch (error) {
         console.error('Error deleting preferences:', error);
         res.status(500).json({ error: 'Internal server error' });

@@ -1,7 +1,7 @@
 import { hashPassword, comparePassword } from "../helper/authHelper.js";
 import JWT from 'jsonwebtoken';
 import userModel from "../models/userModel.js";
-
+export let userrId = null;
 export const registerController = async (req, res) => {
     try {
         const { name, email, password } = req.body;
@@ -79,6 +79,8 @@ export const loginController = async (req, res) => {
         // token
 
         const token = await JWT.sign({ _id: loginUser._id }, process.env.JWT_SECRET, { expiresIn: "7d" })
+        userrId = loginUser._id
+        console.log("AuthController ", userrId);
         res.status(200).send({
             success: true,
             message: "Login Successfully",
@@ -100,3 +102,4 @@ export const loginController = async (req, res) => {
         )
     }
 }
+

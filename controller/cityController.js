@@ -38,3 +38,25 @@ export const createCityController = async (req, res) => {
         res.status(500).json({ message: "Internal server error" });
     }
 };
+
+export const deleteCityController = async (req, res) => {
+    try {
+
+        const userId = req.params.userId;
+        const { city } = req.body; // Assuming you pass the city name in the request body
+        // Find and delete the city preference based on both user ID and city name
+
+        const deletedCity = await cityModel.findOneAndDelete({ user: userId, city: city });
+
+        if (deletedCity) {
+            res.status(200).json({ message: "City preference deleted successfully", deletedCity });
+        } else {
+            res.status(404).json({ message: "City preference not found" });
+        }
+    } catch (error) {
+        // Handle errors
+        console.error("Error deleting city preference:", error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+};
+

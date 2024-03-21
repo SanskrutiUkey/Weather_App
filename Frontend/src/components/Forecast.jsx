@@ -12,9 +12,9 @@ const WEEK_DAYS = [
 ];
 
 const Forecast = ({ data, title }) => {
-  const daysInWeek = new Date().getDay();
-  const forecastDays =  WEEK_DAYS.slice(daysInWeek,WEEK_DAYS.length).concat(WEEK_DAYS.slice(0, daysInWeek));
-  console.log(forecastDays);
+	const daysInWeek = new Date().getDay();
+	const forecastDays = WEEK_DAYS.slice(daysInWeek, WEEK_DAYS.length).concat(WEEK_DAYS.slice(0, daysInWeek));
+	//   console.log(forecastDays);
 	return (
 		<div>
 			<div className=' flex-col  items-center justify-center my-4 mt-5'>
@@ -33,16 +33,16 @@ const Forecast = ({ data, title }) => {
 							src={`icons/${item.weather[0].icon}.svg`}
 							alt=''
 							className=' my-1'
-						/>       
-            <p className='text-[#667689] font-light text-sm'>{item.weather[0].description}</p>
-						
+						/>
+						<p className='text-[#667689] font-light text-sm'>{item.weather[0].description}</p>
+
 					</div>
 				))}
 				{/*  */}
 			</div>
 		</div>
-    
-    
+
+
 	);
 };
 

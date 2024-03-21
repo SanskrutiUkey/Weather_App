@@ -21,7 +21,7 @@ const AuthProvider = ({ children }) => {
             }))
         }
     }, []);
-    // console.log("User check", auth.user);
+    // console.log("User check", auth);
     return (
         <AuthContext.Provider value={[auth, setAuth]}>
             {children}

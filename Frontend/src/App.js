@@ -1,7 +1,8 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import { Navbar } from "./components";
-import Home from "./pages/Home";
+import Home from "./Home";
 import AuthUser from "./components/LoginRegister";
 import Pref from "./components/Pref";
 
@@ -22,3 +23,4 @@ function App() {
 }
 
 export default App;
+

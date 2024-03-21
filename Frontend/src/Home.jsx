@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import {
 	Inputs,
 	TemperatureAndDetails,
-} from "../components";
-import { WEATHER_API_URL, WEATHER_API_KEY } from "../components/Api";
-import { useAuth } from "../context/auth";
+} from "./components";
+import { WEATHER_API_URL, WEATHER_API_KEY } from "./components/Api";
+import { useAuth } from "./context/auth";
 import axios from 'axios';
+import { regSw, subscribe } from "./helper.js";
+
 
 const Home = () => {
 	const [currentWeather1, setCurrentWeather1] = useState(null);
@@ -14,7 +16,14 @@ const Home = () => {
 	const [currentWeather4, setCurrentWeather4] = useState(null);
 	const [auth, setAuth] = useAuth();
 	const [cities, setCities] = useState([]);
+	const [subscriptionStatus, setSubscriptionStatus] = useState(false);
 
+	useEffect(() => {
+		if (auth.user !== null) {
+			fetchCities();
+
+		}
+	}, [auth.user]);
 
 	const fetchCities = async () => {
 		try {
@@ -37,11 +46,16 @@ const Home = () => {
 		}
 	};
 
-	useEffect(() => {
-		if (auth.user !== null) {
-			fetchCities();
+	async function registerAndSubscribe() {
+		console.log("HHiiiii");
+		try {
+			const serviceWorkerReg = await regSw();
+			await subscribe(serviceWorkerReg);
+		} catch (error) {
+			console.log(error);
 		}
-	}, [auth.user]);
+	}
+
 
 	const handleOnSearchChange1 = (searchData) => {
 
@@ -100,11 +114,11 @@ const Home = () => {
 	};
 
 	return (
-
 		<div className="bg-[#000a18] text-blue-100 py-40 px-24 max-[734px]:px-0 justify-center flex">
-			<h3 className="text-cyan-50 ">Serach weather of you favorite cities here ...</h3>
-			<div className="grid grid-cols-2 gap-3">
+
+			<div>
 				{/* First Row */}
+				<h3 className="text-cyan-50 mb-4">Serach weather of you favorite cities here ...</h3>
 				<div className="col-span-2 md:col-span-1">
 					<div className="bg-gradient-to-b from-[#15bff7] to-[#1068f3] h-[560px] weather_box shadow-[0_35px_60px_-15px_rgba(0,205,231,0.3)] mb-10 w-full">
 						<Inputs onSearchChange={handleOnSearchChange1} />
@@ -112,7 +126,9 @@ const Home = () => {
 					</div>
 				</div>
 				{/* Second Row */}
+
 				<div className="col-span-2 md:col-span-1">
+
 					<div className="bg-gradient-to-b from-[#15bff7] to-[#1068f3] h-[560px] weather_box shadow-[0_35px_60px_-15px_rgba(0,205,231,0.3)] mb-10 w-full">
 						<Inputs onSearchChange={handleOnSearchChange2} />
 						{currentWeather2 && <TemperatureAndDetails data={currentWeather2} />}
@@ -131,7 +147,12 @@ const Home = () => {
 						{currentWeather4 && <TemperatureAndDetails data={currentWeather4} />}
 					</div>
 				</div>
+				<button className='bg-slate-200 text-black p-2 rounded-md ml-20' onClick={registerAndSubscribe}>
+					Subscribe
+				</button>
 			</div>
+
+
 		</div>
 	);
 

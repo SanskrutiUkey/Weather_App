@@ -70,6 +70,7 @@ const AuthUser = () => {
                     user: res.data.user,
                     token: res.data.token
                 })
+                // console.log("res.data.user ", res.data.user);
                 localStorage.setItem("auth", JSON.stringify(res.data));
                 navigate("/home")
             }
@@ -89,6 +90,7 @@ const AuthUser = () => {
                 <h3 className='text-5xl font-semibold pt-10 text-blue-950'>Weather App</h3>
             </div>
             <div className='main-user'>
+
                 <div className={`container ${isSignUpMode ? 'sign-up-mode' : ''} ${isSignUpMode2 ? 'sign-up-mode2' : ''}`}>
                     <div className="signin-signup">
                         <form className="sign-in-form" onSubmit={handleSubmitSignIn}>
